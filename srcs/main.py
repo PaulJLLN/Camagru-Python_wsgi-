@@ -1,6 +1,7 @@
-from cgi import parse
 from wsgiref.simple_server import make_server
+from json import dumps
 
+from httpParser import httpParser
 PORT = 8051
 HOST = "0.0.0.0"
 
@@ -18,11 +19,9 @@ def do_get_signup(environ, start_response):
 
 def do_post_signup(environ, start_response):
     status = '200 OK'
-    try:
-        request_body_size = int(environ.get('CONTENT_LENGTH', 256))
-    except (ValueError):
-        request_body_size = 0
-    response_body = environ['wsgi.input'].read(request_body_size)
+    
+    post_arg = httpParser(environ)
+    response_body = f"{post_arg['login']} vous etes bien enregistre !"
 
     response_headers = [
         ('Content-Type', 'text/plain'),
@@ -30,15 +29,14 @@ def do_post_signup(environ, start_response):
     ]
 
     start_response(status, response_headers)
-    return [response_body]
+    return [response_body.encode()]
 
 
 def application (environ, start_response):
     if environ["REQUEST_METHOD"] == "GET":
-        return do_get_signup(environ, start_response)        
+        return do_get_signup(environ, start_response)
     elif environ["REQUEST_METHOD"] == "POST":
         return do_post_signup(environ, start_response)
-    
 
 if __name__ == "__main__":
     httpd = make_server(HOST, PORT, application)
