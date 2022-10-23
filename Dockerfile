@@ -8,4 +8,4 @@ RUN poetry install
 
 COPY . .
 
-CMD [ "python3", "srcs/main.py"]
+CMD [ "python3", "-u", "srcs/main.py"]
