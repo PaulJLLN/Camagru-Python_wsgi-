@@ -2,5 +2,7 @@ version: '3'
 services:
   camagru:
     image: camagru:latest
+    environment:
+      - PYTHONPATH=/camagru
     restart: always
     ports: [8051:8051]
