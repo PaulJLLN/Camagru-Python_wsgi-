@@ -7,7 +7,7 @@ class SignUpView:
     
     def do_GET(self):
         status = '200 OK'
-        with open("templates/login.html", "r") as index:
+        with open("templates/signup.html", "r") as index:
             response_body = index.read()
         response_headers = [
             ('Content-Type', 'text/html'),
@@ -22,6 +22,12 @@ class SignUpView:
         status = '200 OK'
 
         post_arg = httpParser(self._env)
+        # On sanitize / trim les input
+        
+        # On regarde si le nom d'utilisateur et / ou l'adresse mail existe deja dans la base de donnee
+        # Si oui on renvoie un message d'erreur
+        # Si non on cree le profil dans la table temporaire, on envoie le mail et on notifie l'utilisateur
+        # qu'il doit valider son compte sur son adresse mail
         response_body = f"{post_arg['login']} vous etes bien connecte."
 
         response_headers = [

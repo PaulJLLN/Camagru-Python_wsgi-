@@ -8,7 +8,7 @@ class SignInView:
     def do_GET(self):
         print("SignIn GET")
         status = '200 OK'
-        with open("templates/signup.html", "r") as index:
+        with open("templates/signin.html", "r") as index:
             response_body = index.read()
         response_headers = [
             ('Content-Type', 'text/html'),
