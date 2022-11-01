@@ -6,3 +6,13 @@ services:
       - PYTHONPATH=/camagru
     restart: always
     ports: [8051:8051]
+  
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./scripts/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
