@@ -1,8 +1,8 @@
 from wsgiref.simple_server import make_server
 
-from views.signin import SignInView
-from views.signup import SignUpView
-from views.notfound import NotFoundView
+from srcs.views.signin import SignInView
+from srcs.views.signup import SignUpView
+from srcs.views.notfound import NotFoundView
 
 PORT = 8051
 HOST = "0.0.0.0"

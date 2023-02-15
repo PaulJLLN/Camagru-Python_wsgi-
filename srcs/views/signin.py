@@ -1,3 +1,5 @@
+import psycopg2
+
 from srcs.httpParser import httpParser
 
 class SignInView:
@@ -23,10 +25,26 @@ class SignInView:
         status = '303 See Other'
 
         post_arg = httpParser(self._env)
-        response_body = f"{post_arg['login']} vous etes bien connecte."
+        with open("templates/signup.html", "r") as html:
+            response_body = html.read()
+        # On creer une connection a la base de donnee
+
+        conn = psycopg2.connect(
+            host="localhost",
+            port="5432",
+            database="postgres",
+            user="postgres",
+            password="postgres"
+        )
+
+        # On sanitize les credentials
+
+        # On fait la requete pour recuperer le mot de passe associe a l'email 
+
+        # On fait la comparaison des mots de passe
 
         response_headers = [
-            ('Content-Type', 'text/plain'),
+            ('Content-Type', 'text/html'),
             ('Content-Length', str(len(response_body))),
             ('Location', "http://localhost:8051/signup")
         ]
