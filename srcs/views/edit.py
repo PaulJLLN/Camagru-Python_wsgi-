@@ -1,10 +1,10 @@
-class GalleryView:
+class EditView:
     def __init__(self, env, start_fn):
         self._start_fn = start_fn
     
     def do_GET(self):
         status = '200 OK'
-        with open("templates/gallery.html", "r") as index:
+        with open("templates/edit.html", "r") as index:
             response_body = index.read()
         response_headers = [
             ('Content-Type', 'text/html'),

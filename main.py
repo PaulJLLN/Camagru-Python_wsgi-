@@ -3,6 +3,8 @@ from wsgiref.simple_server import make_server
 from srcs.views.signin import SignInView
 from srcs.views.signup import SignUpView
 from srcs.views.notfound import NotFoundView
+from srcs.views.gallery import GalleryView
+from srcs.views.edit import EditView
 
 PORT = 8051
 HOST = "0.0.0.0"
@@ -10,6 +12,8 @@ HOST = "0.0.0.0"
 ROUTES = {
     "/": SignInView,
     "/signup": SignUpView,
+    "/edit": EditView,
+    "/gallery": GalleryView,
     "/notfound": NotFoundView,
 }
 

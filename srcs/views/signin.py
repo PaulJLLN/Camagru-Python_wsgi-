@@ -1,4 +1,4 @@
-# import psycopg2
+import psycopg2
 
 from srcs.httpParser import httpParser
 
@@ -29,13 +29,21 @@ class SignInView:
             response_body = html.read()
         # On creer une connection a la base de donnee
 
-        # conn = psycopg2.connect(
-        #     host="localhost",
-        #     port="5432",
-        #     database="postgres",
-        #     user="postgres",
-        #     password="postgres"
-        # )
+        conn = psycopg2.connect(
+            host="postgres",
+            port="5432",
+            database="postgres",
+            user="postgres",
+            password="postgres"
+        )
+
+        sql_query = "select * from camagru_user"
+        cursor = conn.cursor()
+        cursor.execute(sql_query)
+        print(cursor.fetchall())
+
+        cursor.close()
+        conn.close()
 
         # On sanitize les credentials
 
@@ -46,7 +54,7 @@ class SignInView:
         response_headers = [
             ('Content-Type', 'text/html'),
             ('Content-Length', str(len(response_body))),
-            ('Location', "http://10.11.10.5:8051/signup")
+            ('Location', "http://10.11.4.7:8051/signup")
         ]
 
         self._start_fn(status, response_headers)

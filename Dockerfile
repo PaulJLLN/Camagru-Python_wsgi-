@@ -6,4 +6,4 @@ COPY pyproject.toml pyproject.toml
 RUN pip3 install poetry
 RUN poetry install
 
-CMD [ "python3","-u", "-m" , "main"]
+CMD [ "poetry","run", "python", "-u", "main.py"]

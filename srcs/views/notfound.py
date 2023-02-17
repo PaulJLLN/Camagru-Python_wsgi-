@@ -22,7 +22,7 @@ class NotFoundView:
         response_headers = [
             ('Content-Type', 'text/html'),
             ('Content-Length', str(len(response_body))),
-            ('Location', "http://10.11.10.5:8051/notfound")
+            ('Location', "http://10.11.4.7:8051/notfound")
         ]
         self._start_fn(status, response_headers)
         return [response_body.encode()]
