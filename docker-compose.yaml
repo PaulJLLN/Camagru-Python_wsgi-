@@ -18,3 +18,8 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+  
+  apache:
+    image: httpd
+    ports:
+      - "8080:80"

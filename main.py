@@ -5,12 +5,15 @@ from srcs.views.signup import SignUpView
 from srcs.views.notfound import NotFoundView
 from srcs.views.gallery import GalleryView
 from srcs.views.edit import EditView
+from srcs.views.index import IndexView
 
 PORT = 8051
 HOST = "0.0.0.0"
+IP = "10.11.4.5"
 
 ROUTES = {
-    "/": SignInView,
+    "/": IndexView,
+    "/signin": SignInView,
     "/signup": SignUpView,
     "/edit": EditView,
     "/gallery": GalleryView,

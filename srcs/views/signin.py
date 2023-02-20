@@ -1,4 +1,5 @@
 from srcs.httpParser import httpParser
+from srcs.env import IP
 
 class SignInView:
     def __init__(self, env, start_fn):
@@ -52,7 +53,7 @@ class SignInView:
         response_headers = [
             ('Content-Type', 'text/html'),
             ('Content-Length', str(len(response_body))),
-            ('Location', "http://10.11.4.7:8051/signup")
+            ('Location', f"http://{IP}:8051/signup")
         ]
 
         self._start_fn(status, response_headers)
