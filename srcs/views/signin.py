@@ -1,5 +1,3 @@
-import psycopg2
-
 from srcs.httpParser import httpParser
 
 class SignInView:
