@@ -9,7 +9,7 @@ from srcs.views.index import IndexView
 
 PORT = 8051
 HOST = "0.0.0.0"
-IP = "10.11.4.5"
+IP = "10.11.1.7"
 
 ROUTES = {
     "/": IndexView,
